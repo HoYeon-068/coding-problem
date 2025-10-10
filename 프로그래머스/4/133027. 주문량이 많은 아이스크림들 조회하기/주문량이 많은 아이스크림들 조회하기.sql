@@ -1,0 +1,8 @@
+-- 코드를 입력하세요
+SELECT j.flavor
+FROM JULY j
+LEFT JOIN FIRST_HALF f
+ON j.SHIPMENT_ID=f.SHIPMENT_ID
+GROUP BY j.flavor
+ORDER BY SUM(j.total_order+NVL(f.total_order,0)) DESC
+FETCH NEXT 3 ROWS ONLY;
