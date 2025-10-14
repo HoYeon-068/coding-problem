@@ -1,0 +1,13 @@
+WITH TEMP AS(
+SELECT PRODUCT_ID,SUM(AMOUNT)sum_
+FROM FOOD_ORDER
+WHERE TO_CHAR(PRODUCE_DATE,'YYYY-MM')='2022-05'
+GROUP BY PRODUCT_ID
+)
+
+SELECT t.product_id,p.product_name,(p.price*t.sum_)TOTAL_SALES
+FROM TEMP t
+LEFT JOIN FOOD_PRODUCT p
+ON t.product_id=p.product_id
+WHERE p.product_id IS NOT NULL
+ORDER BY TOTAL_SALES DESC,t.product_id;
