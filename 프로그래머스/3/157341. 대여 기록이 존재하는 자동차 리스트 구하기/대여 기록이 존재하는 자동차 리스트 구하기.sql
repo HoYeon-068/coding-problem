@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+SELECT DISTINCT c.car_id
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY h
+RIGHT JOIN CAR_RENTAL_COMPANY_CAR c
+ON c.CAR_ID=h.car_ID
+WHERE car_type='세단' AND TO_CHAR(start_date,'MM')=10
+ORDER BY c.car_id DESC;
